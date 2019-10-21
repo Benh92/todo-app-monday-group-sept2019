@@ -7,10 +7,10 @@ import "./App.css";
 class App extends React.Component {
   state = {
     tasks: [
-      { text: "Walk the Cat", completed: true, date: "2019-10-16" },
-      { text: "Buy Oats", completed: true, date: "2019-10-21" },
-      { text: "Walk the Tortoise", completed: true, date: "2019-10-22" },
-      { text: "Learn React", completed: true, date: "2019-10-23" }
+      { text: "Walk the Cat", completed: true, date: "2019-10-16", Id: 1 },
+      { text: "Buy Oats", completed: true, date: "2019-10-21", Id: 2 },
+      { text: "Walk the Tortoise", completed: true, date: "2019-10-22", Id: 3 },
+      { text: "Learn React", completed: true, date: "2019-10-23", Id: 4 }
     ]
   }
 
@@ -30,13 +30,13 @@ addTask = (taskText) => {
         <h3>Things I need to do very soon.</h3>
         <div className="row">
           <div className="col-12 col-lg-6">
-            <AddItem />
+            <AddItem addTaskFunc={this.addTask} />
           </div>
           <div className="col-12 col-lg-6">
             <ItemCount count={this.state.tasks.length} />
             <ul id="itemList">
               {this.state.tasks.map(item => {
-                return <Item text={item.text} completed={item.complete} date={item.date} />
+                return <Item key ={item.Id} text={item.text} completed={item.complete} date={item.date} />
               })}
             </ul>
           </div>
