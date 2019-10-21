@@ -1,3 +1,7 @@
 .completedItem {
   text-decoration: line-through;
 }
+
+.greenCheck {
+  color: #46e529;
+}
