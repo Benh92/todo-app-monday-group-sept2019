@@ -5,6 +5,24 @@ import Item from "./Item";
 import "./App.css";
 
 class App extends React.Component {
+  state = {
+    tasks: [
+      { text: "Walk the Cat", completed: true, date: "2019-10-16" },
+      { text: "Buy Oats", completed: true, date: "2019-10-21" },
+      { text: "Walk the Tortoise", completed: true, date: "2019-10-22" },
+      { text: "Learn React", completed: true, date: "2019-10-23" }
+    ]
+  }
+
+// Function to update the tasks with a new task
+addTask = (taskText) => {
+  console.log(taskText)
+// create new task with default compelted and date properties 
+//Add that task to the state
+
+}
+
+
   render() {
     return (
       <div className="container">
@@ -15,13 +33,11 @@ class App extends React.Component {
             <AddItem />
           </div>
           <div className="col-12 col-lg-6">
-            <ItemCount count={5} />
+            <ItemCount count={this.state.tasks.length} />
             <ul id="itemList">
-              <Item text="walk the cat" completed={true}/>
-              <Item text="buy oats" completed={false}/>
-              <Item text="learn React" completed={false} />
-              <Item text="wash slippers" completed={false} />
-              <Item text="de-flea the cat" completed={true} />
+              {this.state.tasks.map(item => {
+                return <Item text={item.text} completed={item.complete} date={item.date} />
+              })}
             </ul>
           </div>
         </div>
